@@ -21,3 +21,30 @@ Bird audio detection (BAD) is defined as identifying the presence of bird sounds
 ● Whole data set is divided in training and testing in ratio of 80:20.
 
 ● Performed data augmentation through time shifting in samples to overcome the imbalance in data. 
+
+# PREPROCESSING ALGORITHM
+Step 1: Data Augmentation performed to balance +ve and -ve data samples. Step 2: After this, we extract MFCC coefficients by applying following five steps:
+● Pre- emphasis filter in spatial domain.
+
+● Split the signal into frames and apply suitable window function.
+
+● Take the N-point FFT of these windowed frame signals (STFT).
+
+● Apply Mel-scale filter banks (Triangular Filter bank) to the amplitude spectrum of  STFT of signals. 
+
+● Apply Discrete Cosine Transform (DCT) for decorrelation of the filter banks.
+Step 3: MFCC feature of size 1000x64 are fed to the pre trained VGGish model. VGGish feature extractor, provided by Google Audioset team used.            (4 layers of convolutional followed by max pooling, 3 fully connected layer). Final feature vector of size 11x128 obtained. Step 4: Baseline and various ML models applied on the extracted feature vectors (Flatten for SVM and MLP).
+Step 1: Data Augmentation performed to balance +ve and -ve data samples. Step 2: After this, we extract MFCC coefficients by applying following five steps: 
+● Pre- emphasis filter in spatial domain. 
+
+● Split the signal into frames and apply suitable window function. 
+
+● Take the N-point FFT of these windowed frame signals (STFT).
+
+● Apply Mel-scale filter banks (Triangular Filter bank) to the amplitude spectrum of  STFT of signals. 
+
+● Apply Discrete Cosine Transform (DCT) for decorrelation of the filter banks.
+
+Step 3: MFCC feature of size 1000x64 are fed to the pre trained VGGish model. VGGish feature extractor, provided by Google Audioset team used.            (4 layers of convolutional followed bye. max pooling, 3 fully connected layer). Final feature vector of size 11x128 obtained. Step 4: Baseline and various ML models applied on the extracted feature vectors (Flatten for SVM and MLP).
+
+![image](https://user-images.githubusercontent.com/54641886/78532728-5ede0680-7805-11ea-8186-35bc26cad4c6.png)
